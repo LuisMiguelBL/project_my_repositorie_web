@@ -51,7 +51,7 @@
 
 {% block content %}
 <div class="perfil">
-    <img src="https://media.licdn.com/dms/image/v2/D4E03AQGEvILnuvlqxQ/profile-displayphoto-shrink_200_200/B4EZyafTNOKsAY-/0/1772118422705?e=1778112000&v=beta&t=gxKKlzOtIqtEWNrwFAZ9dxhu1yiWvhLzDxfG1wAg41E" alt="Foto do Aluno">
+    <img src="{{ pessoa.url }}" alt="Foto do Aluno">
     <h2>Luís Miguel Belfort</h2>
     <p>Estudante de Sistemas de Informação - UAST/UFRPE</p>
 </div>
@@ -59,31 +59,30 @@
 <div class="secao">
     <h3>Sobre Mim</h3>
     <p>
-        Olá! Sou estudante de Sistemas de Informação na UAST/UFRPE.
-        Tenho interesse em desenvolvimento web. Busco sempre aprender novas tecnologias
-        e contribuir com projetos open source.
+        {{ pessoa.descricao }}
     </p>
 </div>
 
 <div class="secao">
     <h3>Dados Pessoais</h3>
-    <ul>
-        <li><strong>Nome:</strong> Luís Miguel Belfort</li>
-        <li><strong>Curso:</strong> Bacharelado em Sistemas de Informação</li>
-        <li><strong>Período:</strong> 5º</li>
-        <li><strong>E-mail:</strong> luis.miguel@ufrpe.br</li>
-        <li><strong>GitHub:</strong> github.com/LuisMiguelBL</li>
-        <li><strong>LinkedIn:</strong> linkedin.com/in/luís-miguel-belfort</li>
-    </ul>
+    {% if pessoa %}
+        <ul>
+            <li><strong>Nome:</strong> {{ pessoa.nome }}</li>
+            <li><strong>Curso:</strong> {{ pessoa.curso }}</li>
+            <li><strong>Período:</strong> {{ pessoa.periodo }}</li>
+        </ul>
+    {% endif %}
 </div>
+    <div class="secao">
+    <h3>Certificados</h3>
+{% if certificados %}
+    {% for certificado in certificados %}
 
-<div class="secao">
-    <h3>Cursos e Certificados</h3>
-    <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-</div>
+        <ul> {{ certificado.descricao }}</ul>
+
+    {% endfor %}
+{% else %}
+    <p>Não possuo certificado no momento</p>
+{% endif %}
+    </div>
 {% endblock %}
