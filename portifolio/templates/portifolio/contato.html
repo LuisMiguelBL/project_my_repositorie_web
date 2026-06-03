@@ -19,8 +19,8 @@
     <div class="secao">
         {% if pessoa %}
         <ul>
-            <li><a href="{{ pessoa.link_git }}">GitHub</a></li>
-            <li><a href="{{ pessoa.link_linkedin }}">linkedin</a></li>
+            <li><a href="{{ pessoa.git}}">GitHub</a></li>
+            <li><a href="{{ pessoa.linked }}">linkedin</a></li>
             <li><strong>email: </strong> {{ pessoa.email }}</li>
         </ul>
     {% endif %}
