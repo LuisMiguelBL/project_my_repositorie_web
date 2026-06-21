@@ -59,13 +59,15 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.notificacao_ms',  # Adicionar esta linha
             ],
         },
     },
@@ -138,3 +140,6 @@ SIMPLE_JWT = {
      'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
      'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
+# ─── Microservico de Notificacao ───
+NOTIFICACAO_MS_URL = 'http://127.0.0.1:8001'
+NOTIFICACAO_MS_API_KEY = '49a80d0d50e57b9e'  # Hash da empresa criada no microservico
